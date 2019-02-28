@@ -10,6 +10,7 @@ import org.junit.Test;
 import edu.smith.cs.csc212.adtr.errors.BadIndexError;
 import edu.smith.cs.csc212.adtr.errors.EmptyListError;
 import edu.smith.cs.csc212.adtr.real.JavaList;
+import edu.smith.cs.csc212.adtr.real.JavaMap;
 
 
 public class JavaListTest {
@@ -113,6 +114,77 @@ public class JavaListTest {
 	// TODO test addIndex methods.
 	
 	@Test
+	public void testAddIndex() {
+		ListADT<String> abcd = makeFullList();
+		abcd.addIndex(0, "z");
+		assertEquals(abcd.getIndex(0), "z");
+	}
+	@Test
+	public void testAddIndex2() {
+		ListADT<String> abcd = makeFullList();
+		abcd.addIndex(4, "z");
+		assertEquals(abcd.getIndex(4), "z");
+	}
+	@Test
+	public void testAddIndex3() {
+		ListADT<String> abcd = makeFullList();
+		abcd.addIndex(2, "z");
+		assertEquals(abcd.getIndex(2), "z");
+	}
+	
+	@Test
+	public void testAddIndex4() {
+		ListADT<String> abcd = makeEmptyList();
+		abcd.addIndex(0, "z");
+		assertEquals(abcd.getIndex(0), "z");
+	}
+	
+	
+	@Test
+	public void testRemoveBack() {
+		ListADT<String> abcd = makeFullList();
+		abcd.removeBack();
+		assertEquals(abcd.size(), 3);
+	}
+	
+	@Test
+	public void testRemoveBack2() {
+		ListADT<String> abcd = makeFullList();
+		abcd.removeBack();
+		assertEquals(abcd.getBack(), "c");
+	}
+	
+	
+	@Test
+	public void testRemoveIndex() {
+		ListADT<String> abcd = makeFullList();
+		abcd.removeIndex(2);
+		assertEquals(abcd.size(), 3);
+	}
+	
+	@Test
+	public void testRemoveIndex2() {
+		ListADT<String> abcd = makeFullList();
+		abcd.removeIndex(2);
+		assertEquals(abcd.getIndex(2), "d");
+	}
+	
+	
+	@Test
+	public void testRemoveFront() {
+		ListADT<String> abcd = makeFullList();
+		abcd.removeFront();
+		assertEquals(abcd.size(), 3);
+	}
+	
+	@Test
+	public void testRemoveFront2() {
+		ListADT<String> abcd = makeFullList();
+		abcd.removeFront();
+		assertEquals(abcd.getFront(), "b");
+	}
+	
+	@Test
 	public void testGetFront() {
 		ListADT<String> data = makeFullList();
 		assertEquals("a", data.getFront());
@@ -173,9 +245,16 @@ public class JavaListTest {
 	}
 	
 	// TODO write some tests for setIndex.
+	@Test
+	public void testSetIndex() {
+		ListADT<String> abcd = makeFullList();
+		abcd.setIndex(0, "z");
+		assertEquals(abcd.getIndex(0), "z");
+	}
+	
 	
 	@Test
 	public void testToJava() {
-		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "d", "d"));
+		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "c", "d"));
 	}
 }

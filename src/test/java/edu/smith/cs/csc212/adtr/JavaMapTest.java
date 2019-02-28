@@ -19,7 +19,7 @@ public class JavaMapTest {
 	}
 	
 	@Test
-	public void testPut () {
+	public void testPutandSize() {
 		MapADT<String, Integer> abc = new JavaMap<>();
 		abc.put("a", 1);
 		abc.put("b", 2);
@@ -44,6 +44,7 @@ public class JavaMapTest {
 		zyx.put("x", 24);
 		assertEquals(zyx.get("a"), null);
 	}
+	
 	
 	@Test
 	public void testRemove() {
@@ -98,5 +99,56 @@ public class JavaMapTest {
 		MapADT<String, Integer> keys = new JavaMap<>();
 		keys.put("a", 1);
 		assertEquals(keys.getKeys().getFront(), "a");
+	}
+	
+	@Test public void testGetEntries() {
+		MapADT<String, Integer> entries = new JavaMap<>();
+		entries.put("a", 1);
+		entries.put("b", 2);
+		entries.put("c", 3);
+		assertEquals(entries.getEntries().size(), 3);
+	}
+	
+	@Test public void testGetEntries2() {
+		MapADT<String, Integer> entries = new JavaMap<>();
+		assertEquals(entries.getEntries().size(), 0);
+	}
+	
+	@Test public void testGetEntries3() {
+		MapADT<String, Integer> entries = new JavaMap<>();
+		entries.put("a", 1);
+		assertEquals(entries.getEntries().size(), 1);
+	}
+	
+	@Test public void testGetEntries4() {
+		MapADT<String, Integer> entries = new JavaMap<>();
+		entries.put("a", 1);
+		assertEquals(entries.getEntries().getFront().getKey(), "a");
+		assertIntEq(entries.getEntries().getFront().getValue(), 1);
+	}
+	
+	@Test public void testToJava() {
+		MapADT<String, Integer> javalist = new JavaMap<>();
+		javalist.put("a", 1);
+		javalist.put("b", 2);
+		javalist.put("c", 3);
+		assertEquals(javalist.toJava().size(), 3);
+	}
+	
+	@Test public void testToJava2() {
+		MapADT<String, Integer> javalist = new JavaMap<>();
+		assertEquals(javalist.toJava().size(), 0);
+	}
+	
+	@Test public void testToJava3() {
+		MapADT<String, Integer> javalist = new JavaMap<>();
+		javalist.put("a", 1);
+		assertEquals(javalist.toJava().size(), 1);
+	}
+	
+	@Test public void testToJava4() {
+		MapADT<String, Integer> javalist = new JavaMap<>();
+		javalist.put("a", 1);
+		assertEquals(javalist.toJava().containsKey("a"), true);
 	}
 }
